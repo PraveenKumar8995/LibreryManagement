@@ -10,7 +10,7 @@ public class QueueDemo {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	//Queue<String> queue=new ArrayDeque<>();
-	Queue<String> queue=new PriorityQueue<>();
+	Queue<String> queue=new PriorityQueue<String>();
 	
 	queue.add("Praveen Kumar");
 	queue.add("Chithu Cuty");

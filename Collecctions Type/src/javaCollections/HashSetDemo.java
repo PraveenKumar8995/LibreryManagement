@@ -16,8 +16,9 @@ public class HashSetDemo {
 		lhset.add("Arjun");
 		lhset.add("Bala");
 		lhset.add("Manoj");
-		
-		Iterator<String> itr=lhset.iterator();
+		lhset.add("Ravi");
+		//mmm
+		Iterator itr=lhset.iterator();
 		
 		while(itr.hasNext())
 		{

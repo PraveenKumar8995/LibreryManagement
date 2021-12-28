@@ -15,9 +15,11 @@ public class ArraListDemo {
 		list.add("world");
 		list.add("earth");
 		list.add("universe");
+		list.add("universe");
 		list.add("sun");
 		list.add("moon");
 		list.add(2, "planet");
+		System.out.println(list.toString());
 		
 		Iterator itr=list.iterator();
 		

@@ -12,7 +12,7 @@ public class LinkedLIstDemo {
 		
 		list.add("New");
 		list.add("world");
-		list.add("earth");
+		list.add(0,"earth");
 		list.add("universe");
 		list.add("sun");
 		list.add("moon");
