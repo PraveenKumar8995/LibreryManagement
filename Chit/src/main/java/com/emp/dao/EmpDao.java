@@ -1,24 +1,28 @@
 package com.emp.dao;
-import java.util.String;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.emp.bean.Employee;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar.String;
+
 
 public class EmpDao {
-	String hostName = "jdbc:mysql://localhost:3306/javatraining"; 
-	String user= "root";
-	String password= "root1234";
+	
+	String hostname="jdbc:mysql://localhost:3306/PROD";
+	String user="root";
+	String password="123root*";
 
 	Connection con;
 public EmpDao()
 {
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		this.con= DriverManager.getConnection(hostName, user, password);
+		this.con= DriverManager.getConnection(hostname, user, password);
 	} catch (ClassNotFoundException | SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -49,6 +53,39 @@ public List<Employee> getEmplist()
 	}
 	return Emplist;
 	}
+
+
+public int insertemployee (Employee emp)
+{
+	int status=0;
+	try {
+		PreparedStatement ps=con.prepareStatement("insert into employees(empid,name,salary)values(?,?,?)");
+		ps.setInt(1,emp.getEid());
+		ps.setString(1,emp.getEname());
+		ps.setInt(1,emp.getEsalary());
+		
+		status=ps.executeUpdate();
+		System.out.println("insert status"+status);
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+		return status;
+	}
+public int deleteemployee (int id)
+{
+	int status=0;
+	try {
+		PreparedStatement ps=con.prepareStatement("delete from employee where id=?");
+		ps.setInt(1, id);
+		status=ps.executeUpdate();
+		System.out.println("delete status"+status);
+		
+	}	
+	catch(SQLException e)
+	{
+		e.printStackTrace();
+	}
+	return status;	
+	}
 }
-
-
